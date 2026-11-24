@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lead Desk — Multi-Site Lead Management Dashboard</title>
+    <script>
+      (function () {
+        window.addEventListener(
+          'error',
+          function (event) {
+            if (
+              event &&
+              typeof event.filename === 'string' &&
+              event.filename.indexOf('chrome-extension://') === 0
+            ) {
+              event.preventDefault();
+              event.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+        try {
+          var d = Object.getOwnPropertyDescriptor(window, 'fetch');
+          if (d && d.configurable && !d.writable && !d.set && typeof d.get === 'function') {
+            var origGet = d.get;
+            var overrideFetch = null;
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: d.enumerable,
+              get: function () {
+                return overrideFetch || origGet.call(window);
+              },
+              set: function (fn) {
+                if (typeof fn === 'function') {
+                  overrideFetch = fn;
+                }
+              },
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Multi-site lead management dashboard with Supabase Auth, Realtime alerts, Kanban pipeline, and dynamic site routing rules."
+    />
+    <meta property="og:title" content="Lead Desk — Multi-Site Lead Management Dashboard" />
+    <meta
+      property="og:description"
+      content="Multi-site lead management dashboard with Supabase Auth, Realtime alerts, Kanban pipeline, and dynamic site routing rules."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&family=Public+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased selection:bg-blue-100 dark:selection:bg-blue-900 selection:text-blue-900 dark:selection:text-blue-100">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

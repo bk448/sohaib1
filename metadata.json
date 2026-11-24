@@ -1,0 +1,6 @@
+{
+  "name": "Remix Multi-Site Lead Desk",
+  "description": "Production multi-site lead management dashboard powered by Supabase Auth, Postgres, and Realtime.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
